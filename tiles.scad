@@ -17,7 +17,7 @@ module tenon(width, height, depth) {
  /*
   * Base provides an easily assembled part so tiles can fit together.
   */
-module base(size, height, tenon_width, tenon_height, tenon_depth) {
+module base(size, height, tenon_width, tenon_height, tenon_depth, tenon_tolerance=0.1) {
     difference() {
         union() {
             cube([size, size, height]);
@@ -27,10 +27,10 @@ module base(size, height, tenon_width, tenon_height, tenon_depth) {
             translate([0, 1*size/4, height/2]) rotate([0, 0, 90]) rotate([90, 0, 0]) tenon(tenon_width, tenon_height, tenon_depth);
         }
         union() {
-            translate([1*size/4, 0, height/2]) rotate([0, 0, 0]) rotate([90, 0, 0]) tenon(tenon_width, tenon_height, tenon_depth);
-            translate([size, 1*size/4, height/2]) rotate([0, 0, 90]) rotate([90, 0, 0]) tenon(tenon_width, tenon_height, tenon_depth);
-            translate([3*size/4, size, height/2]) rotate([0, 0, 0]) rotate([90, 0, 0]) tenon(tenon_width, tenon_height, tenon_depth);
-            translate([0, 3*size/4, height/2]) rotate([0, 0, 90]) rotate([90, 0, 0]) tenon(tenon_width, tenon_height, tenon_depth);
+            translate([1*size/4, 0, height/2]) rotate([0, 0, 0]) rotate([90, 0, 0]) tenon(tenon_width+tenon_tolerance, tenon_height+tenon_tolerance, tenon_depth+tenon_tolerance);
+            translate([size, 1*size/4, height/2]) rotate([0, 0, 90]) rotate([90, 0, 0]) tenon(tenon_width+tenon_tolerance, tenon_height+tenon_tolerance, tenon_depth+tenon_tolerance);
+            translate([3*size/4, size, height/2]) rotate([0, 0, 0]) rotate([90, 0, 0]) tenon(tenon_width+tenon_tolerance, tenon_height+tenon_tolerance, tenon_depth+tenon_tolerance);
+            translate([0, 3*size/4, height/2]) rotate([0, 0, 90]) rotate([90, 0, 0]) tenon(tenon_width+tenon_tolerance, tenon_height+tenon_tolerance, tenon_depth+tenon_tolerance);
         }
     }
 }
