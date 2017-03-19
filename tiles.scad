@@ -48,4 +48,4 @@ base_height = 10;
 tenon_width = base_size/4;
 tenon_height = base_height - 4;
 tenon_depth = 10;
-base(size=100, height=10, tenon_width=tenon_width, tenon_height=tenon_height, tenon_depth=tenon_depth);
+base(size=base_size, height=base_height, tenon_width=tenon_width, tenon_height=tenon_height, tenon_depth=tenon_depth);
